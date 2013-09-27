@@ -1,0 +1,28 @@
+{
+    "name": "pruno/ZF2-ImageManager",
+    "description": "Zend Framework 2 Module for handle Images transformation and storage",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "zf2",
+        "image"
+    ],
+    "homepage": "https://github.com/pruno/ZF2-ImageManager",
+    "autoload": {
+        "psr-0": {
+            "MongoDbVirtualCollections": "src/",
+            "MongoDbVirtualCollectionsTest": "test/"
+        },
+        "classmap": [
+            "./"
+        ]
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "ext-imagick": ">=3.0",
+        "zendframework/zendframework": ">=2.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    }
+}
