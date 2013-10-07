@@ -32,7 +32,7 @@ interface StorageAdapterInterface
     /**
      * @return bool
      */
-    public function canDeclareIdenfier();
+    public function canDeclareIdentifier();
 
     /**
      * @param $id mixed

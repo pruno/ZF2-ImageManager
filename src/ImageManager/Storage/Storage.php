@@ -44,7 +44,7 @@ class Storage
     {
         $id = $image->getId();
 
-        if (!$id && !$this->getAdapter()->canDeclareIdenfier()) {
+        if (!$id && !$this->getAdapter()->canDeclareIdentifier()) {
             throw new \InvalidArgumentException("Image need an id in order to be saved");
         }
 

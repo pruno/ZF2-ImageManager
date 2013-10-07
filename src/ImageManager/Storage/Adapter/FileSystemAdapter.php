@@ -71,7 +71,7 @@ class FilesystemAdapter implements StorageAdapterInterface
     /**
      * @return bool
      */
-    public function canDeclareIdenfier()
+    public function canDeclareIdentifier()
     {
         return false;
     }

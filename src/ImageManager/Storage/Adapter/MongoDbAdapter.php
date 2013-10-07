@@ -52,7 +52,7 @@ class MongoDbAdapter implements StorageAdapterInterface
     /**
      * @return bool
      */
-    public function canDeclareIdenfier()
+    public function canDeclareIdentifier()
     {
         return true;
     }
