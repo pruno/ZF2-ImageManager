@@ -41,7 +41,7 @@ class MongoDbAdapter extends AbstractStorageAdapter
     }
 
     /**
-     * @param $id mixed Id is ignored, mongo will create one
+     * @param $id mixed
      * @param $blob string
      * @return mixed
      */
@@ -50,6 +50,10 @@ class MongoDbAdapter extends AbstractStorageAdapter
         $data = array(
             'blob' => new \MongoBinData($blob, 0x80),
         );
+
+        if ($id) {
+            $data['_id'] = new \MongoId($id);
+        }
 
         $this->collection->insert($data);
 
@@ -63,7 +67,7 @@ class MongoDbAdapter extends AbstractStorageAdapter
     public function has($id)
     {
         return $this->collection->count(array(
-           '_id' => $id
+           '_id' => new \MongoId($id)
         ));
     }
 
@@ -74,7 +78,7 @@ class MongoDbAdapter extends AbstractStorageAdapter
     public function get($id)
     {
         $object = $this->collection->findOne(array(
-            '_id' => $id
+            '_id' => new \MongoId($id)
         ));
 
         return $object ? (string) $object['blob'] : null;
@@ -87,7 +91,7 @@ class MongoDbAdapter extends AbstractStorageAdapter
     public function delete($id)
     {
         $this->collection->remove(array(
-            '_id' => $id
+            '_id' => new \MongoId($id)
         ));
 
         return true;
