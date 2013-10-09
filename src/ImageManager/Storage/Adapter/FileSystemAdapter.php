@@ -47,7 +47,8 @@ class FilesystemAdapter extends AbstractStorageAdapter
 
     /**
      * @param mixed $id
-     * @param $blob
+     * @param string $blob
+     * @return string
      */
     public function set($id, $blob)
     {
@@ -55,6 +56,8 @@ class FilesystemAdapter extends AbstractStorageAdapter
             $this->resolveFilepath($id),
             $blob
         );
+
+        return $id;
     }
 
     /**

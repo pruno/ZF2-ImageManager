@@ -16,10 +16,13 @@ class ArrayAdapter extends AbstractStorageAdapter
     /**
      * @param mixed $id
      * @param string $blob
+     * @return string
      */
     public function set($id, $blob)
     {
         $this->data[(string) $id] = $blob;
+
+        return (string) $id;
     }
 
     /**
