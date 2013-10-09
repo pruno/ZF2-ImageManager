@@ -10,8 +10,8 @@
     "homepage": "https://github.com/pruno/ZF2-ImageManager",
     "autoload": {
         "psr-0": {
-            "MongoDbVirtualCollections": "src/",
-            "MongoDbVirtualCollectionsTest": "test/"
+            "ImageManager": "src/",
+            "ImageManagerTest": "test/"
         },
         "classmap": [
             "./"
