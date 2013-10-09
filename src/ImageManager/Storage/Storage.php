@@ -97,11 +97,19 @@ class Storage
 
     /**
      * @param $id
-     * @return ImageInterface
+     * @return ImageInterface|null
      */
     public function loadImage($id)
     {
-        return $this->getAdapter()->get($id);
+        $blob = $this->getAdapter()->get($id);
+        if (!$blob) {
+            return null;
+        }
+        $image = clone $this->getImagePrototype();
+        $image->setId($id);
+        $image->setBlob($blob);
+
+        return $image;
     }
 
     /**
