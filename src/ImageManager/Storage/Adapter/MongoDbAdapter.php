@@ -2,34 +2,25 @@
 
 namespace ImageManager\Storage\Adapter;
 
-use ImageManager\Storage\StorageAdapterInterface;
-
-class MongoDbAdapter implements StorageAdapterInterface
+/**
+ * Class MongoDbAdapter
+ * @package ImageManager\Storage\Adapter
+ */
+class MongoDbAdapter extends AbstractStorageAdapter
 {
     /**
      * @var \MongoCollection
      */
     protected $collection;
 
-    public function __construct(\MongoCollection $collection)
+    /**
+     * @param \MongoCollection $collection
+     * @param array $options
+     */
+    public function __construct(\MongoCollection $collection, array $options = array())
     {
+        parent::__construct($options);
         $this->collection = $collection;
-    }
-
-    /**
-     * @return void
-     */
-    public function connect()
-    {
-        // nothing to do
-    }
-
-    /**
-     * @return void
-     */
-    public function disconnect()
-    {
-        // nothing to do
     }
 
     /**
@@ -47,14 +38,6 @@ class MongoDbAdapter implements StorageAdapterInterface
     public function ensureStorage()
     {
         //FIXME should test connection
-    }
-
-    /**
-     * @return bool
-     */
-    public function canDeclareIdentifier()
-    {
-        return true;
     }
 
     /**

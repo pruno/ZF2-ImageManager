@@ -2,58 +2,16 @@
 
 namespace ImageManager\Storage\Adapter;
 
-use ImageManager\Storage\StorageAdapterInterface;
-
 /**
  * Class ArrayAdapter
  * @package ImageManager\Storage\Adapter
  */
-class ArrayAdapter implements StorageAdapterInterface
+class ArrayAdapter extends AbstractStorageAdapter
 {
     /**
      * @var array
      */
     protected $data = array();
-
-    /**
-     * @return void
-     */
-    public function connect()
-    {
-        // Nothing to do
-    }
-
-    /**
-     * @return void
-     */
-    public function disconnect()
-    {
-        // Nothing to do
-    }
-
-    /**
-     * @return bool
-     */
-    public function isConnected()
-    {
-        return true;
-    }
-
-    /**
-     * @return void
-     */
-    public function ensureStorage()
-    {
-        // Nothing to do
-    }
-
-    /**
-     * @return bool
-     */
-    public function canDeclareIdentifier()
-    {
-        return true;
-    }
 
     /**
      * @param mixed $id

@@ -35,6 +35,11 @@ interface StorageAdapterInterface
     public function canDeclareIdentifier();
 
     /**
+     * @return bool
+     */
+    public function canSave();
+
+    /**
      * @param $id mixed
      * @param $blob string
      * @return void

@@ -38,10 +38,15 @@ class Storage
     /**
      * @param ImageInterface $image
      * @return void
+     * @throws \Exception
      * @throws \InvalidArgumentException
      */
     public function saveImage(ImageInterface $image)
     {
+        if (!$this->getAdapter()->canSave()) {
+            throw new \Exception("Adapter ".get_class($this->getAdapter())." can't perform save.");
+        }
+
         $id = $image->getId();
 
         if (!$id && !$this->getAdapter()->canDeclareIdentifier()) {

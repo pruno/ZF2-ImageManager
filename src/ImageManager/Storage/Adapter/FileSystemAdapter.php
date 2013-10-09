@@ -2,13 +2,11 @@
 
 namespace ImageManager\Storage\Adapter;
 
-use ImageManager\Storage\StorageAdapterInterface;
-
 /**
  * Class FilesystemAdapter
  * @package ImageManager\Storage\Adapter
  */
-class FilesystemAdapter implements StorageAdapterInterface
+class FilesystemAdapter extends AbstractStorageAdapter
 {
     /**
      * @var array
@@ -18,44 +16,6 @@ class FilesystemAdapter implements StorageAdapterInterface
         'base_dir'          =>  './',
         'umask'             =>  null,
     );
-
-    /**
-     * @param array $options
-     */
-    public function __construct(array $options = array())
-    {
-        if (array_key_exists('base_dir', $options) && is_string($options['base_dir'])) {
-            $this->options['base_dir'] = $options['base_dir'];
-        }
-
-        if (array_key_exists('umask', $options)) {
-            $this->options['umask'] = $options['umask'];
-        }
-    }
-
-    /**
-     * @return void
-     */
-    public function connect()
-    {
-        // Nothing to do
-    }
-
-    /**
-     * @return void
-     */
-    public function disconnect()
-    {
-        // Nothing to do
-    }
-
-    /**
-     * @return bool
-     */
-    public function isConnected()
-    {
-        return true;
-    }
 
     /**
      * @return void
