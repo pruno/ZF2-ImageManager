@@ -2,11 +2,13 @@
 
 namespace ImageManager\Storage\Adapter;
 
+use ImageManager\Storage\StorageAdapterInterface;
+
 /**
  * Class AbstractStorageAdapter
  * @package ImageManager\Storage\Adapter
  */
-abstract class AbstractStorageAdapter
+abstract class AbstractStorageAdapter implements StorageAdapterInterface
 {
     /**
      * @var array
