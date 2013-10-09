@@ -16,11 +16,18 @@ class Storage
     protected $adapter;
 
     /**
-     * @param StorageAdapterInterface $adpter
+     * @var ImageInterface
      */
-    public function __construct(StorageAdapterInterface $adpter)
+    protected $imagePrototype;
+
+    /**
+     * @param StorageAdapterInterface $adapter
+     * @param ImageInterface $imagePrototype
+     */
+    public function __construct(StorageAdapterInterface $adapter, ImageInterface $imagePrototype)
     {
-        $this->adapter = $adpter;
+        $this->adapter = $adapter;
+        $this->imagePrototype = $imagePrototype;
     }
 
     /**
