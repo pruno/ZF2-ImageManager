@@ -51,10 +51,6 @@ class MongoDbAdapter extends AbstractStorageAdapter
             'blob' => new \MongoBinData($blob, 0x80),
         );
 
-        if ($id) {
-            $data['_id'] = new \MongoId($id);
-        }
-
         $this->collection->insert($data);
 
         return (string) $data['_id'];
