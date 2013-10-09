@@ -41,7 +41,7 @@ class MongoDbAdapter extends AbstractStorageAdapter
     }
 
     /**
-     * @param $id mixed
+     * @param $id mixed Id is ignored, mongo will create one
      * @param $blob string
      * @return mixed
      */

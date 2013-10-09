@@ -42,7 +42,7 @@ interface StorageAdapterInterface
     /**
      * @param $id mixed
      * @param $blob string
-     * @return void
+     * @return string The image id
      */
     public function set($id, $blob);
 

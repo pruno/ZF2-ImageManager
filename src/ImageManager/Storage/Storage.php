@@ -53,10 +53,12 @@ class Storage
             throw new \InvalidArgumentException("Image need an id in order to be saved");
         }
 
-        $this->getAdapter()->set(
+        $id = $this->getAdapter()->set(
             $id,
             $image->getBlob()
         );
+
+        $image->setId($id);
     }
 
     /**

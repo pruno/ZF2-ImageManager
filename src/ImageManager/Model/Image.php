@@ -2,7 +2,7 @@
 
 namespace ImageManager\Model;
 
-use ImageManager\Storage\StorageAdapterInterface;
+use ImageManager\Storage\Storage;
 
 /**
  * Class Image
@@ -11,7 +11,7 @@ use ImageManager\Storage\StorageAdapterInterface;
 class Image implements ImageInterface
 {
     /**
-     * @var StorageAdapterInterface
+     * @var Storage
      */
     protected $storage;
 
@@ -26,23 +26,23 @@ class Image implements ImageInterface
     protected $blob;
 
     /**
-     * @param StorageAdapterInterface $storage
+     * @param Storage $storage
      */
-    public function __construct(StorageAdapterInterface $storage)
+    public function __construct(Storage $storage)
     {
         $this->setStorage($storage);
     }
 
     /**
-     * @param StorageAdapterInterface $storage
+     * @param Storage $storage
      */
-    public function setStorage(StorageAdapterInterface $storage)
+    public function setStorage(Storage $storage)
     {
         $this->storage = $storage;
     }
 
     /**
-     * @return StorageAdapterInterface
+     * @return Storage
      */
     public function getStorage()
     {
@@ -79,5 +79,10 @@ class Image implements ImageInterface
     public function getBlob()
     {
         return $this->blob;
+    }
+
+    public function save()
+    {
+        $this->getStorage()->saveImage($this);
     }
 }
