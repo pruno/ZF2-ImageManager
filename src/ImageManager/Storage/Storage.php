@@ -24,9 +24,27 @@ class Storage
      * @param StorageAdapterInterface $adapter
      * @param ImageInterface $imagePrototype
      */
-    public function __construct(StorageAdapterInterface $adapter, ImageInterface $imagePrototype)
+    public function __construct(StorageAdapterInterface $adapter, ImageInterface $imagePrototype = null)
     {
         $this->adapter = $adapter;
+        if ($imagePrototype) {
+            $this->imagePrototype = $imagePrototype;
+        }
+    }
+
+    /**
+     * @return ImageInterface
+     */
+    public function getImagePrototype()
+    {
+        return $this->imagePrototype;
+    }
+
+    /**
+     * @param ImageInterface $imagePrototype
+     */
+    public function setImagePrototype(ImageInterface $imagePrototype)
+    {
         $this->imagePrototype = $imagePrototype;
     }
 
