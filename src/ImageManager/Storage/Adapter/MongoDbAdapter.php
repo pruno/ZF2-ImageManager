@@ -48,7 +48,7 @@ class MongoDbAdapter extends AbstractStorageAdapter
     public function set($id, $blob)
     {
         $data = array(
-            'blob' => new \MongoBinData($blob, 0x80),
+            'blob' => new \MongoBinData($blob, \MongoBinData::CUSTOM),
         );
 
         $this->collection->insert($data);
@@ -77,7 +77,7 @@ class MongoDbAdapter extends AbstractStorageAdapter
             '_id' => new \MongoId($id)
         ));
 
-        return $object ? (string) $object['blob'] : null;
+        return $object ? $object['blob']->bin : null;
     }
 
     /**
