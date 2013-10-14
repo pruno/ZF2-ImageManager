@@ -85,4 +85,12 @@ class Image implements ImageInterface
     {
         $this->getStorage()->saveImage($this);
     }
+
+    /**
+     * @return bool
+     */
+    public function delete()
+    {
+        return $this->getStorage()->deleteImage($this);
+    }
 }
