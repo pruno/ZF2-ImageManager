@@ -37,7 +37,10 @@ class Storage
      */
     public function create()
     {
-        return clone $this->imagePrototype;
+        $object = clone $this->imagePrototype;
+        $object->setStorage($this);
+
+        return $object;
     }
 
     /**
