@@ -2,6 +2,8 @@
 
 namespace ImageManager\Model;
 
+use ImageManager\Storage\Storage;
+
 /**
  * Class ImageInterface
  * @package ImageManager\Model
@@ -27,4 +29,15 @@ interface ImageInterface
      * @return string
      */
     public function getBlob();
+
+    /**
+     * @param Storage $storage
+     * @param bool $preserveId
+     */
+    public function setStorage(Storage $storage, $preserveId = null);
+
+    /**
+     * @return Storage
+     */
+    public function getStorage();
 }

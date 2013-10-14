@@ -28,16 +28,27 @@ class Image implements ImageInterface
     /**
      * @param Storage $storage
      */
-    public function __construct(Storage $storage)
+    public function __construct(Storage $storage = null)
     {
-        $this->setStorage($storage);
+        if ($storage) {
+            $this->setStorage($storage);
+        }
     }
 
     /**
      * @param Storage $storage
+     * @param bool $preserveId
      */
-    public function setStorage(Storage $storage)
+    public function setStorage(Storage $storage, $preserveId = false)
     {
+        if ($this->storage === $storage) {
+            return;
+        }
+
+        if (!$preserveId) {
+            $this->id = null;
+        }
+
         $this->storage = $storage;
     }
 
