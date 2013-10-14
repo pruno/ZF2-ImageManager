@@ -28,22 +28,22 @@ class Storage
     {
         $this->adapter = $adapter;
         if ($imagePrototype) {
-            $this->imagePrototype = $imagePrototype;
+            $this->setPrototype($imagePrototype);
         }
     }
 
     /**
      * @return ImageInterface
      */
-    public function getImagePrototype()
+    public function create()
     {
-        return $this->imagePrototype;
+        return clone $this->imagePrototype;
     }
 
     /**
      * @param ImageInterface $imagePrototype
      */
-    public function setImagePrototype(ImageInterface $imagePrototype)
+    public function setPrototype(ImageInterface $imagePrototype)
     {
         $this->imagePrototype = $imagePrototype;
     }
@@ -105,7 +105,8 @@ class Storage
         if (!$blob) {
             return null;
         }
-        $image = clone $this->getImagePrototype();
+
+        $image = $this->create();
         $image->setId($id);
         $image->setBlob($blob);
 
