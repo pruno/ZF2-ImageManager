@@ -71,6 +71,8 @@ class ImagickAdapter implements BackendAdapterInterface
             if ($container->imagick instanceof \Imagick) {
                 $newContainer->imagick = clone $container->imagick;
             }
+
+            $image->setBackendContainer($newContainer);
         }
     }
 
@@ -130,7 +132,7 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function getWidth(EditableImageInterface $image)
     {
-        return $this->getImagick($image)->getImageWidth();
+        return $this->getImagick($image)->getimagewidth();
     }
 
     /**
