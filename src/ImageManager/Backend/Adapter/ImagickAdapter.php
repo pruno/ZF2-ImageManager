@@ -78,7 +78,11 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function getBlob(EditableImageInterface $image)
     {
-        return $this->getImagick($image)->getimageblob();
+        try {
+            return $this->getImagick($image)->getimageblob();
+        } catch (\ImagickException $e) {
+            return '';
+        }
     }
 
     /**
