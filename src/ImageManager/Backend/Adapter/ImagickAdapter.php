@@ -36,9 +36,6 @@ class ImagickAdapter implements BackendAdapterInterface
         ) {
             $container = new ImagickContainer();
             $container->imagick = new \Imagick();
-            $container->imagick->readimageblob(
-                $image->getBlob()
-            );
         }
 
         return $container->imagick;
