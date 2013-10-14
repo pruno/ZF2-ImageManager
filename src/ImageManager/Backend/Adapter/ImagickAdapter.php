@@ -36,6 +36,8 @@ class ImagickAdapter implements BackendAdapterInterface
         ) {
             $container = new ImagickContainer();
             $container->imagick = new \Imagick();
+
+            $image->setBackendContainer($container);
         }
 
         return $container->imagick;
@@ -128,7 +130,7 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function getWidth(EditableImageInterface $image)
     {
-        return $this->getImagick($image)->getimagesize()['width'];
+        return $this->getImagick($image)->getImageWidth();
     }
 
     /**
@@ -137,7 +139,7 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function getHeight(EditableImageInterface $image)
     {
-        return $this->getImagick($image)->getimagesize()['height'];
+        return $this->getImagick($image)->getimageheight();
     }
 
     /**
