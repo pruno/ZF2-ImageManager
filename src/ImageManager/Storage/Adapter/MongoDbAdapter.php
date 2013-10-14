@@ -51,9 +51,19 @@ class MongoDbAdapter extends AbstractStorageAdapter
             'blob' => new \MongoBinData($blob, \MongoBinData::CUSTOM),
         );
 
-        $this->collection->insert($data);
+        if ($id && $exists = $this->has($id)) {
 
-        return (string) $data['_id'];
+            $this->collection->update(array(
+                '_id' => new \MongoId($id)
+            ), $data);
+
+        } else {
+
+            $this->collection->insert($data);
+            $id = (string) $data['_id'];
+        }
+
+        return $id;
     }
 
     /**
@@ -62,7 +72,7 @@ class MongoDbAdapter extends AbstractStorageAdapter
      */
     public function has($id)
     {
-        return $this->collection->count(array(
+        return !!$this->collection->count(array(
            '_id' => new \MongoId($id)
         ));
     }
