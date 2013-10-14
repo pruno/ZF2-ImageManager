@@ -4,7 +4,7 @@ namespace ImageManager\Model;
 
 use ImageManager\Backend\Adapter\BackendAdapterInterface;
 use ImageManager\Backend\Container\AbstractContainer;
-use ImageManager\Storage\StorageAdapterInterface;
+use ImageManager\Storage\Storage;
 
 /**
  * Class EditableImage
@@ -23,10 +23,10 @@ class EditableImage extends Image implements EditableImageInterface
     protected $container;
 
     /**
-     * @param StorageAdapterInterface $storage
+     * @param Storage $storage
      * @param BackendAdapterInterface $backend
      */
-    public function __construct(StorageAdapterInterface $storage, BackendAdapterInterface $backend)
+    public function __construct(Storage $storage, BackendAdapterInterface $backend)
     {
         parent::__construct($storage);
         $this->setBackend($backend);
