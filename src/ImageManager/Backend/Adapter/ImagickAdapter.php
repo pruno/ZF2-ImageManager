@@ -104,7 +104,11 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function getSize(EditableImageInterface $image)
     {
-        return $this->getImagick($image)->getimagelength();
+        try {
+            return $this->getImagick($image)->getimagelength();
+        } catch (\ImagickException $e) {
+            return 0;
+        }
     }
 
     /**
@@ -113,7 +117,11 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function getFormat(EditableImageInterface $image)
     {
-        return $this->getImagick($image)->getimageformat();
+        try {
+            return $this->getImagick($image)->getimageformat();
+        } catch (\ImagickException $e) {
+            return null;
+        }
     }
 
     /**
@@ -132,7 +140,11 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function getWidth(EditableImageInterface $image)
     {
-        return $this->getImagick($image)->getimagewidth();
+        try {
+            return $this->getImagick($image)->getimagewidth();
+        } catch (\ImagickException $e) {
+            return 0;
+        }
     }
 
     /**
@@ -141,7 +153,11 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function getHeight(EditableImageInterface $image)
     {
-        return $this->getImagick($image)->getimageheight();
+        try {
+            return $this->getImagick($image)->getimageheight();
+        } catch (\ImagickException $e) {
+            return 0;
+        }
     }
 
     /**
