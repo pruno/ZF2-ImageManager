@@ -199,8 +199,8 @@ class EditableImage extends Image implements EditableImageInterface
         /* @var $base \ImageManager\Model\EditableImage */
         $base = $this->getBackend()->create(
             new self(
-                $this->getStorage(),
-                $this->getBackend()
+                $this->getBackend(),
+                $this->getStorage()
             ),
             $width,
             $height,
