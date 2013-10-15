@@ -131,7 +131,23 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function convert(EditableImageInterface $image, $format)
     {
-        $this->getImagick($image)->setimageformat($format);
+        if ($format != $this->getFormat($image)) {
+
+            $imagick = $this->getImagick($image);
+
+            $newImagick = new \Imagick();
+            $newImagick->newimage(
+                $imagick->getimagewidth(),
+                $imagick->getimageheight(),
+                $this->getImagickPixel(),
+                $format
+            );
+
+            $newImagick->compositeimage($imagick, \Imagick::COMPOSITE_OVER, 0, 0);
+
+            $imagick->destroy();
+            $image->getBackendContainer()->imagick = $newImagick;
+        }
     }
 
     /**
