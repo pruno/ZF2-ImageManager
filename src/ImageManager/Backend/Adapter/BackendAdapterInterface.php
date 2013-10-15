@@ -72,9 +72,10 @@ interface BackendAdapterInterface
      * @param int$width
      * @param int $height
      * @param string $backgroundColor
+     * @param string $format
      * @return EditableImageInterface
      */
-    public function create(EditableImageInterface $prototype, $width, $height, $backgroundColor = null);
+    public function create(EditableImageInterface $prototype, $width, $height, $backgroundColor = null, $format = null);
 
     /**
      * @param EditableImageInterface $image

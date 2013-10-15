@@ -165,9 +165,10 @@ class ImagickAdapter implements BackendAdapterInterface
      * @param int$width
      * @param int $height
      * @param string $backgroundColor
+     * @param string $format
      * @return EditableImageInterface
      */
-    public function create(EditableImageInterface $prototype, $width, $height, $backgroundColor = null)
+    public function create(EditableImageInterface $prototype, $width, $height, $backgroundColor = null, $format = null)
     {
         $image = clone $prototype;
         $container = new ImagickContainer();
@@ -175,7 +176,8 @@ class ImagickAdapter implements BackendAdapterInterface
         $container->imagick->newimage(
             $width,
             $height,
-            $this->getImagickPixel($backgroundColor)
+            $this->getImagickPixel($backgroundColor),
+            $format
         );
 
         $image->setBackendContainer($container);

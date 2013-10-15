@@ -204,18 +204,11 @@ class EditableImage extends Image implements EditableImageInterface
             ),
             $width,
             $height,
-            $backgroundColor
-        );
-
-        $base->convert(
+            $backgroundColor,
             $this->getFormat()
         );
 
         $this->getBackend()->compose($base, $this, $x, $y);
-
-        $this->setBlob(
-            $base->getBlob()
-        );
 
         $this->setBackendContainer(
             $base->getBackendContainer()
