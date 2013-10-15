@@ -213,6 +213,8 @@ class EditableImage extends Image implements EditableImageInterface
         $this->setBackendContainer(
             $base->getBackendContainer()
         );
+
+        $this->getBackend()->cloneContainer($this);
     }
 
     /**
