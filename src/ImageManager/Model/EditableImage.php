@@ -208,9 +208,6 @@ class EditableImage extends Image implements EditableImageInterface
             $this->getFormat()
         );
 
-        // Imagick lazy-generate all data
-        $base->getBlob();
-
         $this->getBackend()->compose($base, $this, $x, $y);
 
         $this->setBackendContainer(

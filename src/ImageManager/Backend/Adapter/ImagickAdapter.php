@@ -180,6 +180,9 @@ class ImagickAdapter implements BackendAdapterInterface
             $format
         );
 
+        // Imagick lazy-generate all data
+        $container->imagick->getBlob();
+
         $image->setBackendContainer($container);
 
         return $image;
