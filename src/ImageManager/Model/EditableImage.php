@@ -257,7 +257,7 @@ class EditableImage extends Image implements EditableImageInterface
 
         $this->getBackend()->resize($this, $newWidth, $newHeight);
 
-        $this->selfCompose($newWidth, $newHeight, ($newWidth - $width) / 2, ($newHeight / $height) / 2, $backgroundColor);
+        $this->selfCompose($width, $height, ($newWidth - $width) / 2, ($newHeight / $height) / 2, $backgroundColor);
     }
 
     /**
@@ -285,7 +285,7 @@ class EditableImage extends Image implements EditableImageInterface
 
         $this->getBackend()->resize($this, $newWidth, $newHeight);
 
-        $this->selfCompose($newWidth, $newHeight, ($newWidth - $width) / 2, ($newHeight / $height) / 2, $backgroundColor);
+        $this->selfCompose($width, $height, ($newWidth - $width) / 2, ($newHeight / $height) / 2, $backgroundColor);
     }
 
     /**
