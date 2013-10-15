@@ -23,10 +23,10 @@ class EditableImage extends Image implements EditableImageInterface
     protected $container;
 
     /**
-     * @param Storage $storage
      * @param BackendAdapterInterface $backend
+     * @param Storage $storage
      */
-    public function __construct(Storage $storage, BackendAdapterInterface $backend)
+    public function __construct(BackendAdapterInterface $backend, Storage $storage = null)
     {
         parent::__construct($storage);
         $this->setBackend($backend);
