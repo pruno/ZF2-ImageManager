@@ -181,7 +181,7 @@ class ImagickAdapter implements BackendAdapterInterface
         );
 
         // Imagick lazy-generate all data
-        $container->imagick->getBlob();
+        $container->imagick->getimageblob();
 
         $image->setBackendContainer($container);
 
