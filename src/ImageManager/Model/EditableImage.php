@@ -250,9 +250,11 @@ class EditableImage extends Image implements EditableImageInterface
             $newHeight = $oldHeight;
         }
 
-        $this->getBackend()->resize($this, $newWidth, $newHeight);
+        $this->getBackend()->resize($this, round($newWidth), round($newHeight));
 
-        $this->selfCompose($width, $height, ($width - $newWidth) / 2, ($height - $newHeight) / 2, $backgroundColor);
+        if ($width != $newWidth && $height != $newHeight) {
+            $this->selfCompose($width, $height, round($width - $newWidth) / 2, round($height - $newHeight) / 2, $backgroundColor);
+        }
     }
 
     /**
@@ -278,9 +280,11 @@ class EditableImage extends Image implements EditableImageInterface
             $newWidth = $newHeight * $ratio;
         }
 
-        $this->getBackend()->resize($this, $newWidth, $newHeight);
+        $this->getBackend()->resize($this, round($newWidth), round($newHeight));
 
-        $this->selfCompose($width, $height, ($width - $newWidth) / 2, ($height - $newHeight) / 2, $backgroundColor);
+        if ($width != $newWidth && $height != $newHeight) {
+            $this->selfCompose($width, $height, round($width - $newWidth) / 2, round($height - $newHeight) / 2, $backgroundColor);
+        }
     }
 
     /**
