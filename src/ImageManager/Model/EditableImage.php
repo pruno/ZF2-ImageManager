@@ -250,9 +250,9 @@ class EditableImage extends Image implements EditableImageInterface
             $newHeight = $oldHeight;
         }
 
-        $this->getBackend()->resize($this, round($newWidth), round($newHeight));
+        $this->resize(round($newWidth), round($newHeight));
 
-        if ($width != $newWidth && $height != $newHeight) {
+        if ($width != $newWidth || $height != $newHeight) {
             $this->selfCompose($width, $height, round($width - $newWidth) / 2, round($height - $newHeight) / 2, $backgroundColor);
         }
     }
@@ -280,9 +280,9 @@ class EditableImage extends Image implements EditableImageInterface
             $newWidth = $newHeight * $ratio;
         }
 
-        $this->getBackend()->resize($this, round($newWidth), round($newHeight));
+        $this->resize(round($newWidth), round($newHeight));
 
-        if ($width != $newWidth && $height != $newHeight) {
+        if ($width != $newWidth || $height != $newHeight) {
             $this->selfCompose($width, $height, round($width - $newWidth) / 2, round($height - $newHeight) / 2, $backgroundColor);
         }
     }
@@ -302,7 +302,7 @@ class EditableImage extends Image implements EditableImageInterface
         $newWidth = $width;
         $newHeight = $oldHeight * $width / $oldWidth;
 
-        $this->getBackend()->resize($this, $newWidth, $newHeight);
+        $this->resize($newWidth, $newHeight);
     }
 
     /**
@@ -320,7 +320,7 @@ class EditableImage extends Image implements EditableImageInterface
         $newheight = $height;
         $newWidth = $oldWidth * $height / $oldHeight;
 
-        $this->getBackend()->resize($this, $newWidth, $newheight);
+        $this->resize($newWidth, $newheight);
     }
 
     /**
@@ -331,6 +331,6 @@ class EditableImage extends Image implements EditableImageInterface
         $newWidth = $this->getBackend()->getWidth($this) * $zoom / 100;
         $newHeight = $this->getBackend()->getHeight($this) * $zoom / 100;
 
-        $this->getBackend()->resize($this, $newWidth, $newHeight);
+        $this->resize($newWidth, $newHeight);
     }
 }
