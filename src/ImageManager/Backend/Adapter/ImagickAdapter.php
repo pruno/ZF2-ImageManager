@@ -226,7 +226,7 @@ class ImagickAdapter implements BackendAdapterInterface
      */
     public function resize(EditableImageInterface $image, $width, $height)
     {
-        $this->getImagick($image)->resizeimage($width, $height, \Imagick::FILTER_LANCZOS, 1, true);
+        $this->getImagick($image)->resizeimage($width, $height, \Imagick::FILTER_LANCZOS, 1, false);
     }
 
     /**
