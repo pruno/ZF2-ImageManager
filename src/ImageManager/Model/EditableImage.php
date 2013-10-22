@@ -231,20 +231,22 @@ class EditableImage extends Image implements EditableImageInterface
         $divX = $oldWidth / $width;
         $divY = $oldHeight / $height;
 
+        $ratio = $this->getRatio();
+
         if ($oldWidth >= $width || $oldHeight >= $height) {
             if ($divX > $divY) {
                 $newWidth = $width;
-                $newHeight = $height / $divX;
+                $newHeight = $newWidth / $ratio;
             } else {
                 $newHeight = $height;
-                $newWidth = $width / $divY;
+                $newWidth = $newHeight * $ratio;
             }
         } elseif ($allowUpsample && $divX > $divY) {
             $newWidth = $width;
-            $newHeight = $height / $divX;
+            $newHeight = $newWidth / $ratio;
         } elseif ($allowUpsample) {
             $newHeight = $height;
-            $newWidth = $width / $divY;
+            $newWidth = $newHeight * $ratio;
         } else {
             $newWidth = $oldWidth;
             $newHeight = $oldHeight;
